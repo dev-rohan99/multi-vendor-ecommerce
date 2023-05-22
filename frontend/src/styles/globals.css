@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer components {
+  body {
+    @apply bg-bgPrimary;
+  }
+
+  .topBarMenuItem {
+    @apply hover:underline hover:text-primary text-[13px] font-semibold text-lightGray;
+  }
+
+  .divider {
+    @apply bg-gray-300 h-[1px] w-full;
+  }
+
+  .btn {
+    @apply duration-300 border text-[12px] px-3 py-[6px] font-normal rounded-[3px] sm:text-sm sm:px-6;
+  }
+    .btn-icon {
+    @apply flex items-center justify-center rounded-sm gap-x-2 w-6 h-6;
+  }
+
+
+  .btn-success{
+    @apply bg-success
+  }
+    .btn-danger {
+    @apply bg-danger border-danger text-white;
+  }
+  .btn-primary {
+    @apply bg-primary border-primary text-white;
+  }
+
+  .btn-success {
+    @apply bg-success border-success text-white;
+  }
+
+  .btn-outline-danger {
+    @apply text-danger border-danger hover:bg-danger  hover:border-danger hover:text-white;
+  }
+  .btn-outline-primary {
+    @apply text-primary border-primary hover:bg-primary hover:border-primary hover:text-white;
+  }
+  .btn-outline-success {
+    @apply text-success border-success hover:bg-success hover:border-success hover:text-white;
+  }
+
+  .form-control input {
+    @apply px-4 py-2 w-full rounded-md outline-none  border focus:border-blue-300 text-gray-500 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-200;
+  }
+  .form-control input[type="checkbox"] {
+    @apply inline-block w-4 h-4;
+  }
+
+  .form-control textarea {
+    @apply px-4 py-2 w-full rounded-md outline-none  border focus:border-blue-300 text-gray-500 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-200;
+  }
+  .form-control select {
+    @apply px-4 py-2 w-full rounded-md outline-none  border focus:border-blue-300 text-gray-500 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-200;
+  }
+  .form-control label {
+    @apply block font-medium dark:text-gray-400 mb-1;
+  }
+
+  .deliveryZoneChecked {
+    @apply text-secondary;
+  }
+
+    .title {
+    @apply text-[23px] font-semibold text-[#444];
+  }
+  .card-title {
+    @apply text-[17px] font-medium text-[#5b626b] ;
+  }
+
+  .card {
+    @apply rounded-md  bg-gray-800;
+  }
+
+  .card-header {
+    @apply flex justify-between items-center  px-5 py-2;
+  }
+
+
+
+  .deliveryZoneChecked > .checkIcon {
+    @apply text-[#bebebe];
+  }
+
+  .deliveryZoneBlock input:checked + .deliveryZoneChecked {
+    @apply bg-[#acd0ff];
+  }
+
+  .deliveryZoneBlock input:checked + .deliveryZoneChecked > .checkIcon {
+    @apply text-primary;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+.dashboard_sidebar ul {
+  padding: 0 10px;
+}
+.dashboard_sidebar ul li {
+  margin-bottom: 10px;
+}
+.dashboard_sidebar ul li .menu {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  padding: 8px 25px;
+  border-radius: 5px;
+  width: 100%;
+  color: white;
+}
+
+.dashboard_sidebar ul li .menu:hover {
+  background-color: #35446fac;
+}
+.dashboard_sidebar ul li .menu.active {
+  background-color: #f0f3fb;
+  font-weight: 500;
+}
+
+
+.dashboard_sidebar ul li .sub-menu {
+  height: 0;
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+.dashboard_sidebar ul li.active .sub-menu {
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+  transition: 0.5s ease-in-out;
+}
+
