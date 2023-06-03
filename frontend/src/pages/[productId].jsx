@@ -8,6 +8,8 @@ import { useRouter } from 'next/router';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import { useGetSingleProductQuery } from "../redux/api/apiSlice.js";
+import Cookies from 'js-cookie';
+import createToast from '../utility/createToast';
 
 
 const SingleProduct = () => {
@@ -18,7 +20,8 @@ const SingleProduct = () => {
   const [sliderItem, setSliderItem] = useState(data?.product?.photo);
   const [value, setValue] = useState(1);
   const [sliderIndex, setSliderIndex] = useState(0);
-  const [tab, setTab] = useState("description")
+  const [tab, setTab] = useState("description");
+  const isLoggedIn = !!Cookies.get('userToken', { domain: 'http://localhost:3000' });
 
   if(value <= 0){
     setValue(1);
@@ -42,13 +45,40 @@ const SingleProduct = () => {
     if (sliderIndex === 0) {
       setSliderIndex(data?.product?.photo.length - 1)
     } else {
-      setSliderIndex(sliderIndex - 1)
-
+      setSliderIndex(sliderIndex - 1);
     }
   }
 
   const handleAddToCard = () => {
-    const getCarts = localStorage.getItem("cartItem");
+    if(isLoggedIn){
+      const products = JSON.parse(localStorage.getItem("cartItems")) || [];
+      const item = products.find(item => item.id === data?.product?._id);
+  
+      if(!item){
+        const newProduct = {
+          id : data?.product?._id,
+          title : data?.product?.title,
+          description : data?.product?.description,
+          price : data?.product?.discountPrice ? data?.product?.discountPrice : data?.product?.price,
+          size : data?.product?.size ? data?.product?.size : null,
+          color : data?.product?.color ? data?.product?.color : null,
+          photo : data?.product?.photo[0],
+          quantity : value,
+          checked: true,
+        };
+        createToast("success", "Check your cart list and place order!");
+        products.push(newProduct);
+        localStorage.setItem("cartItems", JSON.stringify(products));
+        console.log(JSON.stringify(products));
+      }else{
+        item.quantity += value;
+        localStorage.setItem("cartItems", JSON.stringify(products));
+        createToast("success", "Check your cart list and place order!");
+        console.log(JSON.stringify(products));
+      }
+    }else{
+      router.replace("/login");
+    }
     
   }
 

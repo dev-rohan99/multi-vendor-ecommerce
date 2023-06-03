@@ -36,7 +36,7 @@ const Slider = () => {
 
   return (
     <div className="relative group" >
-      <img className='max-h-[350px] object-top object-cover duration-300 w-full cursor-pointer' src={sliderItem[sliderIndex].photo} alt="" />
+      <img className='max-h-[600px] h-[100%] object-top object-cover duration-300 w-full cursor-pointer' src={sliderItem[sliderIndex].photo} alt="" />
       <div className="absolute w-full text-center bottom-3 space-x-2">
         {sliderItem.map((item, index) =>
           <button onClick={() => setSliderIndex(index)} key={index} className={`h-4 w-4 rounded-full ${sliderIndex === index ? "bg-primary" : "bg-red-400"}`}></button>

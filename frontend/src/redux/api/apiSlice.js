@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const apiSlice = createApi({
     reducerPath : "api",
-    baseQuery : fetchBaseQuery({ baseUrl : "https://ecommerce-backend-2pvg.onrender.com/api/v1", credentials : "include" }),
+    baseQuery : fetchBaseQuery({ baseUrl : "http://localhost:8080/api/v1", credentials : "include" }),
     endpoints : (builder) => ({
 
         register : builder.mutation({
@@ -23,8 +23,8 @@ export const apiSlice = createApi({
         }),
 
         updateUser : builder.mutation({
-            query : (payload) => ({
-                url : "/users/update",
+            query : (id, payload) => ({
+                url : `/users/update/${id}`,
                 method : "PUT",
                 body : payload
             })

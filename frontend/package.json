@@ -1,5 +1,5 @@
 {
-  "name": "modarn",
+  "name": "modern",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -36,5 +36,5 @@
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.4"
   },
-  "proxy": "https://ecommerce-backend-2pvg.onrender.com"
+  "proxy": "http://localhost:8080"
 }
